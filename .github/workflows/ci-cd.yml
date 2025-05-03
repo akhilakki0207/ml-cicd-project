@@ -25,7 +25,10 @@ jobs:
       run: python src/train.py
 
     - name: Run tests
-      run: pytest tests/
+      run: |
+          export PYTHONPATH=$PYTHONPATH:$(pwd)
+          pytest tests/
+
 
     - name: Build Docker image
       run: docker build -t ml-api .
